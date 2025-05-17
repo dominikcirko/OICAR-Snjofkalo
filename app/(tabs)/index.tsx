@@ -9,7 +9,6 @@ import { ThemedView } from '@/components/ThemedView';
 
 export default function HomeScreen() {
   const handleLogout = () => {
-    // In a real app, you would clear authentication state here
     console.log('Logging out...');
     router.replace('/(auth)/login');
   };

@@ -1,7 +1,3 @@
-// This file is not used directly in expo-router setup
-// The main entry point is configured in package.json as "expo-router/entry"
-// But we're keeping this file as a placeholder for future reference
-
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';

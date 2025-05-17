@@ -10,18 +10,15 @@ export default function LoginScreen() {
   const [password, setPassword] = useState('admin');
 
   const handleLogin = () => {
-    // Verify credentials (in a real app, this would be more secure)
     if (username === 'admin' && password === 'admin') {
       console.log('Login successful!');
       router.replace('/(tabs)');
     } else {
       console.log('Login failed: Invalid credentials');
-      // In a real app, you would show an error message to the user
       alert('Invalid username or password');
     }
   };
 
-  // Add a function to autofill admin credentials
   const fillAdminCredentials = () => {
     setUsername('admin');
     setPassword('admin');

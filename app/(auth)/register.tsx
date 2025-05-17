@@ -12,9 +12,7 @@ export default function RegisterScreen() {
   const [confirmPassword, setConfirmPassword] = useState('');
 
   const handleRegister = () => {
-    // In a real app, you would validate inputs and create a new user
     console.log('Register attempted with:', { username, email, password, confirmPassword });
-    // Navigate to login screen after registration
     router.replace('/login');
   };
 
