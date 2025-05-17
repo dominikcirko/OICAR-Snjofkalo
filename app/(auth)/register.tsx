@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, TextInput, TouchableOpacity, View, ScrollView } from 'react-native';
-import { router } from 'expo-router';
+import { Redirect, router } from 'expo-router';
 
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
@@ -10,11 +10,27 @@ export default function RegisterScreen() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [isRegistered, setIsRegistered] = useState(false);
 
   const handleRegister = () => {
+    // Validate input fields
+    if (!username.trim() || !email.trim() || !password.trim() || !confirmPassword.trim()) {
+      alert('Please fill in all fields');
+      return;
+    }
+    
+    if (password !== confirmPassword) {
+      alert('Passwords do not match');
+      return;
+    }
+    
     console.log('Register attempted with:', { username, email, password, confirmPassword });
-    router.replace('/login');
+    setIsRegistered(true);
   };
+  
+  if (isRegistered) {
+    return <Redirect href="/(auth)/login" />;
+  }
 
   return (
     <ScrollView>

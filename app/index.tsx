@@ -1,18 +1,27 @@
 import React, { useEffect } from 'react';
 import { ActivityIndicator, StyleSheet, View } from 'react-native';
-import { router } from 'expo-router';
+import { Redirect } from 'expo-router';
 import { ThemedText } from '@/components/ThemedText';
 
 export default function Index() {
+  // Use state to control when to redirect
+  const [shouldRedirect, setShouldRedirect] = React.useState(false);
+
   useEffect(() => {
-    // Small delay to show the loading screen before redirecting
+    // Wait a moment before redirecting to the login screen
     const timer = setTimeout(() => {
-      router.replace('/(auth)/login');
+      setShouldRedirect(true);
     }, 1500);
     
     return () => clearTimeout(timer);
   }, []);
 
+  // If we should redirect, use the Redirect component instead of router.replace
+  if (shouldRedirect) {
+    return <Redirect href="/(auth)/login" />;
+  }
+
+  // Otherwise show the loading screen
   return (
     <View style={styles.container}>
       <ThemedText type="title" style={styles.title}>OICAR Mobile App</ThemedText>
