@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, TextInput, TouchableOpacity, View } from 'react-native';
-import { Redirect, router } from 'expo-router';
+import { router } from 'expo-router';
 
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
@@ -8,7 +8,6 @@ import { ThemedView } from '@/components/ThemedView';
 export default function LoginScreen() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleLogin = () => {
     if (!username.trim() || !password.trim()) {
@@ -18,17 +17,13 @@ export default function LoginScreen() {
     
     if (username === 'admin' && password === 'admin') {
       console.log('Login successful!');
-      setIsLoggedIn(true);
+      // Navigate directly without using state
+      router.replace('/(tabs)');
     } else {
       console.log('Login failed: Invalid credentials');
       alert('Invalid username or password');
     }
   };
-
-  // If logged in, redirect to tabs
-  if (isLoggedIn) {
-    return <Redirect href="/(tabs)" />;
-  }
 
   const fillAdminCredentials = () => {
     setUsername('admin');

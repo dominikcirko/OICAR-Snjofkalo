@@ -1,7 +1,6 @@
 import { Image } from 'expo-image';
 import { StyleSheet, TouchableOpacity } from 'react-native';
-import { Redirect } from 'expo-router';
-import React, { useState } from 'react';
+import { router } from 'expo-router';
 
 import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
@@ -9,16 +8,11 @@ import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 
 export default function HomeScreen() {
-  const [isLoggedOut, setIsLoggedOut] = useState(false);
-
   const handleLogout = () => {
     console.log('Logging out...');
-    setIsLoggedOut(true);
+    // Navigate directly to login screen
+    router.replace('/(auth)/login');
   };
-
-  if (isLoggedOut) {
-    return <Redirect href="/(auth)/login" />;
-  }
 
   return (
     <ParallaxScrollView
