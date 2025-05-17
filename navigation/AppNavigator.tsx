@@ -4,12 +4,9 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { useColorScheme } from '@/hooks/useColorScheme';
 import { DarkTheme, DefaultTheme } from '@react-navigation/native';
 
-// Import screens
-// These will be created in the next steps
-import LoginScreen from '@/screens/LoginScreen';
-import RegisterScreen from '@/screens/RegisterScreen';
-import HomeScreen from '@/screens/HomeScreen';
-// We'll use the existing HomeScreen later
+import LoginScreen from '../screens/LoginScreen';
+import RegisterScreen from '../screens/RegisterScreen';
+import HomeScreen from '../screens/HomeScreen';
 
 // Define the types for our navigation stack parameters
 export type RootStackParamList = {

@@ -1,9 +1,9 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
-import { RootStackParamList } from '@/navigation/AppNavigator';
+import { ThemedText } from '../components/ThemedText';
+import { ThemedView } from '../components/ThemedView';
+import { RootStackParamList } from '../navigation/AppNavigator';
 
 type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Home'>;
 
@@ -13,7 +13,6 @@ type Props = {
 
 export default function HomeScreen({ navigation }: Props) {
   const handleLogout = () => {
-    // Navigate back to Login screen
     navigation.navigate('Login');
   };
 
