@@ -6,12 +6,14 @@ import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
+import { useAuth } from '../_layout';
 
 export default function HomeScreen() {
+  const { logout } = useAuth();
+
   const handleLogout = () => {
     console.log('Logging out...');
-    // Navigate directly to login screen
-    router.replace('/(auth)/login');
+    logout();
   };
 
   return (

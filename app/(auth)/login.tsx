@@ -4,10 +4,12 @@ import { router } from 'expo-router';
 
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
+import { useAuth } from '../_layout';
 
 export default function LoginScreen() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const { login } = useAuth();
 
   const handleLogin = () => {
     if (!username.trim() || !password.trim()) {
@@ -17,8 +19,8 @@ export default function LoginScreen() {
     
     if (username === 'admin' && password === 'admin') {
       console.log('Login successful!');
-      // Navigate directly without using state
-      router.replace('/(tabs)');
+      // Use the login function from auth context
+      login();
     } else {
       console.log('Login failed: Invalid credentials');
       alert('Invalid username or password');
