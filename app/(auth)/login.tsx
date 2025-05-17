@@ -6,10 +6,17 @@ import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 
 export default function LoginScreen() {
-  const [username, setUsername] = useState('admin');
-  const [password, setPassword] = useState('admin');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleLogin = () => {
+    // Validate that fields are not empty
+    if (!username.trim() || !password.trim()) {
+      alert('Please enter both username and password');
+      return;
+    }
+    
+    // Check credentials
     if (username === 'admin' && password === 'admin') {
       console.log('Login successful!');
       router.replace('/(tabs)');
@@ -63,7 +70,7 @@ export default function LoginScreen() {
           style={[styles.button, styles.helpButton]}
           onPress={fillAdminCredentials}
         >
-          <ThemedText style={styles.buttonText}>Fill Demo Credentials</ThemedText>
+          <ThemedText style={styles.buttonText}>Demo Login (admin/admin)</ThemedText>
         </TouchableOpacity>
       </View>
     </ThemedView>
