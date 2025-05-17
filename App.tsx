@@ -1,24 +1,20 @@
+// This file is not used directly in expo-router setup
+// The main entry point is configured in package.json as "expo-router/entry"
+// But we're keeping this file as a placeholder for future reference
+
 import React from 'react';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
-import { useFonts } from 'expo-font';
-import AppNavigator from './navigation/AppNavigator';
-import { useColorScheme } from './hooks/useColorScheme';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { View, Text } from 'react-native';
 
 export default function App() {
-  const colorScheme = useColorScheme();
-  const [loaded] = useFonts({
-    SpaceMono: require('./assets/fonts/SpaceMono-Regular.ttf'),
-  });
-
-  if (!loaded) {
-    return null;
-  }
-
   return (
     <SafeAreaProvider>
-      <AppNavigator />
-      <StatusBar style={colorScheme === 'dark' ? 'light' : 'dark'} />
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <Text>This App.tsx file is not used with expo-router.</Text>
+        <Text>See app/index.tsx for the actual entry point.</Text>
+      </View>
+      <StatusBar style="auto" />
     </SafeAreaProvider>
   );
 } 
